@@ -19,6 +19,6 @@ jobs:
       - run: docker build -t danielmaomitch/multi-worker ./worker
 
       - run: docker push danielmaomitch/multi-client
-      - run: docker push danielmaomitch/multi-nginxthu
+      - run: docker push danielmaomitch/multi-nginx
       - run: docker push danielmaomitch/multi-server
       - run: docker push danielmaomitch/multi-worker
