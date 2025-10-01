@@ -9,7 +9,10 @@ services:
     hostname: client
   server:
     image: "danielmaomitch/multi-server"
-    mem-limit: 128M
+    deploy:
+      resources:
+        limits:
+          memory: 128M
     hostname: api
     environment:
       - REDIS_HOST=$REDIS_HOST
