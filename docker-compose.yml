@@ -2,11 +2,14 @@ version: "3"
 services:
   client:
     image: "danielmaomitch/multi-client"
-    mem_limit: 128m
+    deploy:
+      resources:
+        limits:
+          memory: 128M
     hostname: client
   server:
     image: "danielmaomitch/multi-server"
-    mem-limit: 128m
+    mem-limit: 128M
     hostname: api
     environment:
       - REDIS_HOST=$REDIS_HOST
@@ -18,14 +21,20 @@ services:
       - PGPORT=$PGPORT
   worker:
     image: "danielmaomitch/multi-worker"
-    mem-limit: 128m
+    deploy:
+      resources:
+        limits:
+          memory: 128M
     hostname: worker
     environment:
       - REDIS_HOST=$REDIS_HOST
       - REDIS_PORT=$REDIS_PORT
   nginx:
     image: "danielmaomitch/multi-nginx"
-    mem-limit: 128m
+    deploy:
+      resources:
+        limits:
+          memory: 128M
     hostname: nginx
     ports:
       - "80:80"
